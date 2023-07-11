@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+func main() {
+	var limit int
+	fmt.Println("Enter the array size")
+	fmt.Scan(&limit)
+	arr := make([]int, limit)
+	fmt.Println("Enter the values of array")
+	for i := 0; i < limit; i++ {
+		fmt.Println("arr[", i, "]: ")
+		fmt.Scan(&arr[i])
+	}
+	fmt.Println("The array elements are: ", arr)
+
+	for i := 0; i < limit; i++ {
+		for j := i + 1; j < limit; j++ {
+			if arr[i] > arr[j] {
+				arr[i] = arr[j] + arr[i]
+				arr[j] = arr[i] - arr[j]
+				arr[i] = arr[i] - arr[j]
+			}
+		}
+	}
+
+	fmt.Println("The sorted array is: ", arr)
+}
